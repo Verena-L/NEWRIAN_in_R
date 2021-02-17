@@ -36,8 +36,8 @@ The time series of the parameters cumulative discharge (Q), measured tension (Ps
 ### parallelization.R
 The parallelization is defined in the main script. Usually ten optimization runs with different start parameters take place. To ensure integrity, each optimization runs in its own local and temporary folder. In the "parallelization.R" script the optimization algorithm "Simulated Annealing Simplex" from the package [optimization](https://cran.r-project.org/web/packages/optimization/vignettes/vignette_master.pdf) is defined with all its control parameters. 
 The optimization runs according to the following steps:  
-    > 1. start parameters are entered into the Selector.in input file.  
-    > 2. HYDRUS 1D exe is executed.  
-    > 3. the modeled parameters are extracted from the results file and normalized.  
-    > 4. according to the objective function, model and measurement data are compared until the error is minimal.  
+    + 1. start parameters are entered into the Selector.in input file.  
+    + 2. HYDRUS 1D exe is executed.  
+    + 3. the modeled parameters are extracted from the results file and normalized.  
+    + 4. according to the objective function, model and measurement data are compared until the error is minimal.  
 
