@@ -35,9 +35,6 @@ The time series of the parameters cumulative discharge (Q), measured tension (Ps
 ### openhydfiles.R
 In this script, the corresponding model parameters are calculated and extracted from the Hydrus "Obs_Node.out" results file and normalized over the range of measurement parameters so that model and measurement are directly comparable.  
 
-### target.R
-
-
 ### parallelization.R
 The parallelization is defined in the main script. Usually ten optimization runs with different start parameters take place. To ensure integrity, each optimization runs in its own local and temporary folder. In the "parallelization.R" script the optimization algorithm "Simulated Annealing Simplex" from the package [optimization](https://cran.r-project.org/web/packages/optimization/vignettes/vignette_master.pdf) is defined with all its control parameters. 
 The optimization runs according to the following steps:  
@@ -46,4 +43,20 @@ The optimization runs according to the following steps:
 * 3. the modeled parameters are extracted from the results file and normalized.  
 * 4. according to the objective function, model and measurement data are compared until the error is minimal.  
 
+
+### target.R  
+Definition of the objective function of the optimization algorithm.  This is the normalized RMSE composed of all parameters plus the water contents following the MSO with their respective weighting factors. At the end of each optimization it is checked whether the change in the MvG parameters has reduced this rmseN_total.
+The objective function must be separated from the other optimization, so that it can be passed as function in optim_sa depending on the MvG parameters alone.  
+
+### retention_VG.R
+Definition of the retention and the conductivity curve accoridng to Mualem van Genuchten depending on pF and the six MvG-Parameters.  
+
+### RMSE_ME_R2.R
+Definition of a variety of goodness of fit parameters, which not only compares the individual measured parameter time series, but also assesses the quality of individual sections of the MSO experiment, the error ratios of parameters and assesses how much the model curves deviate from measured water contents in the soil sample. 
+
+### output_preparation.R  
+After all optimization runs of a sample are successfully completed, the best model result is determined in the main script. The best set of Mualem van Genuchten parameters is then uploaded directly into the database with coefficients of variation, as well as the best model parameter time series and the model quality coefficients calculated for them. 
+
+### result_plots.R
+Graphical representation of the model results. For each soil sample, the result of the modeling is displayed graphically and saved locally as a PDF file. In this are the three time series of the normalized parameters, as well as the deviation of model and measurement. The result of the water retention and conductivity curve with indication of the confidence interval from the different model runs and model information and MvG parameters in tabular form. 
 
