@@ -20,7 +20,7 @@ This folder structure corresponds to the extracted installation folder. However,
     + H1D_CALC.exe
 
 ## 3. Script Structure  
-The main file is "run_hydrus_in_r_parallel.R", whichis the only one that has to be opened and executed. The ten other scripts deal with subareas, are called within the main script via source() and only have to exist in the same location.  
-At the beginning of the main script the own local database and folder structures are defined. Individual adjustments can be made at this point. The following step defines the model parameters and the limit range for the optimization of the 6 Mualem-van-Genuchten parameters. 
+The main file is "run_hydrus_in_r_parallel.R", whichis the only one that has to be opened and executed. The explanation of the NEWRIAN in R code runs along the currently executed scripts. By working with a main script, in which individual subsections are processed in the additionally ten provided sub-scripts, it always returns to the main file.  ### run_hydrus_inR_parallel.R
+At the beginning of the main script the own local database and folder structures are defined. Individual adjustments can be made at this point. The following step defines the model parameters and the limit range for the optimization of the 6 Mualem-van-Genuchten parameters.The limit range for the MvG parameters is further restricted by information on the pore space ratios of the investigated soil sample (Total Pore Space, Water Contents at different pF Values). Depending on the number of optimization runs ("NL" default=10), sets of MvG starting parameters for optimization are selected from limit ranges.
 
 
