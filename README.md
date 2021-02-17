@@ -31,7 +31,13 @@ In this script, the processed raw data of the MSO experiment are retrieved from 
 Herein, the input files for HYDRUS 1D are adapted. A total of three files are read in and edited. The "Selector.in" file, which primarily defines the modeling time points selects the Mualem-van-Genuchten model.   The second file "Profile.DAT", which defines the study design of the MSO experiment as a two-layer soil, specifies the vertical modeling points of soil sample and ceramic plate, and specifies the depth profile of the tension at the beginning of the measurement.  The last input file "ATMOSPH.in" defines the lower boundary condition and specifies the applied negative pressure at each modeling time step, passing the time points of the pressure step change.
 
 ### openlabfiles.R
-The time series of the parameters cumulative discharge (Q), measured tension (Psi) and integrated water content (WG) are extracted and normalized from the selected measured data.   
+The time series of the parameters cumulative discharge (Q), measured tension (Psi) and integrated water content (V) are extracted and normalized from the selected measured data.   
 
 ### parallelization.R
+The parallelization is defined in the main script. Usually ten optimization runs with different start parameters take place. To ensure integrity, each optimization runs in its own local and temporary folder. In the "parallelization.R" script the optimization algorithm "Simulated Annealing Simplex" from the package [optimization](https://cran.r-project.org/web/packages/optimization/vignettes/vignette_master.pdf) is defined with all its control parameters. 
+The optimization runs according to the following steps:
+    1. start parameters are entered into the Selector.in input file.
+    2. HYDRUS 1D exe is executed
+    3. the modeled parameters are extracted from the results file and normalized.
+    4. according to the objective function, model and measurement data are compared until the error is minimal.
 
