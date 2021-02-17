@@ -30,5 +30,8 @@ In this script, the processed raw data of the MSO experiment are retrieved from 
 ### initial_data.R  
 Herein, the input files for HYDRUS 1D are adapted. A total of three files are read in and edited. The "Selector.in" file, which primarily defines the modeling time points selects the Mualem-van-Genuchten model.   The second file "Profile.DAT", which defines the study design of the MSO experiment as a two-layer soil, specifies the vertical modeling points of soil sample and ceramic plate, and specifies the depth profile of the tension at the beginning of the measurement.  The last input file "ATMOSPH.in" defines the lower boundary condition and specifies the applied negative pressure at each modeling time step, passing the time points of the pressure step change.
 
+### openlabfiles.R
+The time series of the parameters cumulative discharge (Q), measured tension (Psi) and integrated water content (WG) are extracted and normalized from the selected measured data.   
 
+### parallelization.R
 
