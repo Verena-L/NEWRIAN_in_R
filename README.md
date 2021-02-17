@@ -25,6 +25,10 @@ The main file is "run_hydrus_in_r_parallel.R", which is the only one that has to
 At the beginning of the main script the own local database and folder structures are defined. Individual adjustments can be made at this point. The following step defines the model parameters and the limit range for the optimization of the 6 Mualem-van-Genuchten parameters.The limit range for the MvG parameters is further restricted by information on the pore space ratios of the investigated soil sample (Total Pore Space, Water Contents at different pF Values). Depending on the number of optimization runs ("NL" default=10), sets of MvG starting parameters for optimization are selected from limit ranges.  
 
 ### select_printtimes.R
+In this script, the processed raw data of the MSO experiment are retrieved from the database and shortened to relevant data points for modeling. Data points with minimal change at all are reduced, especially at the end of each pressure level and measurement, so that data points with large information content receive a higher weighting in the model. Another advantage is that fewer data points are included in the optimization process, which increases speed.
+
+### initial_data.R  
+
 
 
 
