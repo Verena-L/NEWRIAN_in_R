@@ -28,7 +28,7 @@ At the beginning of the main script the own local database and folder structures
 In this script, the processed raw data of the MSO experiment are retrieved from the database and shortened to relevant data points for modeling. Data points with minimal change at all are reduced, especially at the end of each pressure level and measurement, so that data points with large information content receive a higher weighting in the model. Another advantage is that fewer data points are included in the optimization process, which increases speed.
 
 ### initial_data.R  
-
+Herein, the input files for HYDRUS 1D are adapted. A total of three files are read in and edited. The "Selector.in" file, which primarily defines the modeling time points selects the Mualem-van-Genuchten model.   The second file "Profile.DAT", which defines the study design of the MSO experiment as a two-layer soil, specifies the vertical modeling points of soil sample and ceramic plate, and specifies the depth profile of the tension at the beginning of the measurement.  The last input file "ATMOSPH.in" defines the lower boundary condition and specifies the applied negative pressure at each modeling time step, passing the time points of the pressure step change.
 
 
 
